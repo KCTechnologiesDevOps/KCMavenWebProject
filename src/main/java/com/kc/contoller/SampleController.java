@@ -22,7 +22,7 @@ public class SampleController {
 System.out.println("Inside printAddress method");
         JSONObject js = new JSONObject();
         js.put("Name", "KC Technologies, DevOps training Institute");
-        js.put("Address", " Marathahalli ");
+        js.put("Address", " Bellendur ");
 
         return js.toString();
 
