@@ -8,8 +8,7 @@ node {
        stage('Compiling'){
 
           sh 'mvn deploy'
-       }
-	   
+       }   
       stage('Sonar') {
                     //add stage sonar
                     sh 'mvn sonar:sonar'
