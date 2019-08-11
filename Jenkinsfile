@@ -5,7 +5,6 @@ node {
 
           checkout scm
        }
-
        stage('Compiling'){
 
           sh 'mvn deploy'
