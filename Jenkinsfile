@@ -1,6 +1,6 @@
-#!groovy
 
-node {
+
+    >>>>>>> development
        stage('Checkout'){
 
           checkout scm
