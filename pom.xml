@@ -24,18 +24,6 @@
      	<sonar.jacoco.itReportPath>${project.basedir}/../target/jacoco-it.exec</sonar.jacoco.itReportPath>
         <sonar.groovy.binaries>target/classes</sonar.groovy.binaries>
   </properties>
-
-    <scm>
-        <connection>scm:git:https://github.com/KCTechnologies/Maven-Web-Project</connection>
-        <developerConnection>scm:git:https://github.com/KCTechnologies/Maven-Web-Project</developerConnection>
-        <tag>HEAD</tag>
-        <url>https://github.com/KCTechnologies/Maven-Web-Project</url>
-    </scm>
-	
-    <issueManagement>
-        <system>GitHub</system>
-        <url>https://github.com/KCTechnologies/Maven-Web-Project/issues</url>
-    </issueManagement>
 	
 	
   <dependencies>
@@ -91,6 +79,18 @@
 		</dependency>
   </dependencies>
 
+   <distributionManagement>
+        <repository>
+          <id>nexus</id>
+          <name>KC Tech Releases Nexus Repository</name>
+          <url>http://13.233.55.160:8081/repository/kc-maven-release/</url>
+        </repository>
+        <snapshotRepository>
+          <id>nexus</id>
+          <name>KC Tech Snapshot Nexus Repository </name>
+           <url>http://13.233.55.160:8081/repository/kc-maven-snapshot/</url>
+        </snapshotRepository>
+   </distributionManagement>
   <build>
     <plugins>
       <plugin>
@@ -105,53 +105,4 @@
     </plugins>
   </build>
 
-  <profiles>
-    <profile>
-      <id>sonar-coverage</id>
-      <activation>
-        <activeByDefault>true</activeByDefault>
-      </activation>
-      <build>
-        <pluginManagement>
-          <plugins>
-            <plugin>
-              <groupId>org.jacoco</groupId>
-              <artifactId>jacoco-maven-plugin</artifactId>
-              <version>0.7.8</version>
-            </plugin>
-          </plugins>
-        </pluginManagement>
-        <plugins>
-          <plugin>
-            <groupId>org.jacoco</groupId>
-            <artifactId>jacoco-maven-plugin</artifactId>
-            <configuration>
-              <append>true</append>
-            </configuration>
-            <executions>
-              <execution>
-                <id>agent-for-ut</id>
-                <goals>
-                  <goal>prepare-agent</goal>
-                </goals>
-              </execution>
-              <execution>
-                <id>agent-for-it</id>
-                <goals>
-                  <goal>prepare-agent-integration</goal>
-                </goals>
-              </execution>
-              <execution>
-                <id>jacoco-site</id>
-                <phase>verify</phase>
-                <goals>
-                  <goal>report</goal>
-                </goals>
-              </execution>
-            </executions>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
-  </profiles>
 </project>
