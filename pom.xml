@@ -91,6 +91,28 @@
            <url>http://13.233.55.160:8081/repository/kc-maven-snapshot/</url>
         </snapshotRepository>
    </distributionManagement>
+	
+	   <profiles>
+        <profile>
+            <id>sonar</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <sonar.host.url>http://13.233.55.160:9000/</sonar.host.url>
+				<sonar-maven-plugin.version>3.3.0.603</sonar-maven-plugin.version>
+            </properties>
+            <build>
+              <plugins>
+                <plugin>
+                    <groupId>org.sonarsource.scanner.maven</groupId>
+                    <artifactId>sonar-maven-plugin</artifactId>
+                    <version>${sonar-maven-plugin.version}</version>
+                </plugin>
+              </plugins>
+            </build>
+        </profile>
+  </profiles>
   <build>
     <plugins>
       <plugin>
