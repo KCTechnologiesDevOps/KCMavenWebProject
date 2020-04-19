@@ -78,7 +78,6 @@
 			<version>${spring.version}</version>
 		</dependency>
   </dependencies>
-
    <distributionManagement>
         <repository>
           <id>nexus</id>
