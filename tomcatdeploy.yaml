@@ -5,4 +5,4 @@
     - name: Deploy war to tomcat
       copy:
         src: target/*.war
-        dest: /opt/apache-tomcat-8.5.57/webapps
+        dest: /var/lib/jenkins/workspace/ansible/target/*.war
