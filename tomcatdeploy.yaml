@@ -4,5 +4,5 @@
   tasks:
     - name: Deploy war to tomcat
       copy:
-        src: target/*.war
-        dest: /var/lib/jenkins/workspace/ansible/target/*.war
+        src: /var/lib/jenkins/workspace/ansible/target/*.war
+        dest: /opt/apache-tomcat-8.5.57/webapps
