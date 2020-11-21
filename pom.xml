@@ -25,7 +25,6 @@
         <sonar.groovy.binaries>target/classes</sonar.groovy.binaries>
   </properties>
 	
-	
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
