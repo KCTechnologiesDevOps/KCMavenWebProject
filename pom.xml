@@ -96,7 +96,7 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <sonar.host.url>http://3.236.111.86:9000/</sonar.host.url>
+                <sonar.host.url>http://3.143.240.98:9000/</sonar.host.url>
 				<sonar-maven-plugin.version>3.3.0.603</sonar-maven-plugin.version>
             </properties>
             <build>
