@@ -1,0 +1,33 @@
+node(){
+    stage("Git checkout"){
+        git 'https://github.com/KCTechnologiesDevOps/KCMavenWebProject.git'
+    }
+    stage(" Maven Clean Package"){
+      def mavenHome =  tool name: "M2_HOME", type: "maven"
+      def mavenCMD = "${mavenHome}/bin/mvn"
+      sh "${mavenCMD} clean package"
+      
+    } 
+    stage('Build Docker Image'){
+        sh 'docker build -t kctechnologiesdevops/kubesintegration:1.0 .'
+    }
+    stage('Push Docker Image'){
+        withCredentials([string(credentialsId: 'docker-pwd', variable: 'DOCKER_HUB_PWD')]) {
+            sh "docker login -u kctechnologiesdevops -p ${DOCKER_HUB_PWD}"
+    }
+        sh 'docker push kctechnologiesdevops/kubesintegration:1.0'
+     }
+     
+    stage("Connect to Kops"){
+        
+      sshagent(['kops-ubuntu']) {
+      sh "scp -o StrictHostKeyChecking=no kbsbatch21.yaml ubuntu@13.232.201.105:/home/ubuntu" 
+      sh "ssh ubuntu@13.232.201.105 kubectl apply -f kbsbatch21.yaml"
+       
+    
+        }  
+        
+    }
+    
+    
+}
