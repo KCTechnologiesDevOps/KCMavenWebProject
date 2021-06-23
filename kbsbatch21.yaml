@@ -27,7 +27,7 @@ metadata:
     app: kctech
 spec:
   selector:
-    app: kctech
+    name: kctech
   type: NodePort
   ports:
   - nodePort: 31000
