@@ -8,6 +8,7 @@
   <version>1.0-SNAPSHOT</version>
   <name>Maven Web Project</name>
   <description>Maven Web Project for Java</description>
+	
   <properties>
 	    <spring.version>4.1.4.RELEASE</spring.version>
 		<junit.version>4.11</junit.version>
