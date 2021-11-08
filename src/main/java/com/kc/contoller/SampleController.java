@@ -20,7 +20,7 @@ Testing comment
 public class SampleController {
     @RequestMapping(value = "/getResponse", method = RequestMethod.GET)
     @ResponseBody
-    String printAddress(HttpServletRequest request, HttpServletResponse response, HttpSession httpSession)
+    public String printAddress(HttpServletRequest request, HttpServletResponse response, HttpSession httpSession)
             throws JSONException {
         int a = 20;
 System.out.println("Inside printAddress method");
