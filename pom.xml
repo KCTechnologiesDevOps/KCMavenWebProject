@@ -90,7 +90,7 @@
         </snapshotRepository>
    </distributionManagement>
 	
-	   <profiles>
+<!--	   <profiles>
         <profile>
             <id>sonar</id>
             <activation>
@@ -110,7 +110,7 @@
               </plugins>
             </build>
         </profile>
-  </profiles>
+  </profiles> -->
   <build>
     <plugins>
       <plugin>
