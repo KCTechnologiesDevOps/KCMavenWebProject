@@ -1,0 +1,46 @@
+node{
+   stage("checkout from SCM"){
+        
+      git 'https://github.com/KCTechnologiesDevOps/KCMavenWebProject.git'  
+    }
+   stage("Maven build"){
+        def mvnHome = tool name: 'M2_HOME', type: 'maven'
+        def mvnCMD = "${mvnHome}/bin/mvn"
+        sh "${mvnCMD} clean package"
+    }
+   
+   stage('SonarQube Analysis') {
+        def mvnHome = tool name: 'M2_HOME', type: 'maven'
+        withSonarQubeEnv('sonar-6') { 
+          sh "${mvnHome}/bin/mvn sonar:sonar"
+        }
+    }
+    
+    stage("Quality Gate Statuc Check"){
+          timeout(time: 1, unit: 'HOURS') {
+              def check = waitForQualityGate()
+              if (check.status != 'OK') {
+                   slackSend baseUrl: 'https://hooks.slack.com/services/',
+                   channel: '#KCDevOpsBatch22',
+                   color: 'danger', 
+                   message: 'SonarQube Analysis Failed', 
+                   teamDomain: 'kctechnologies',
+                   tokenCredentialId: 'slack-demo'
+                  error "Pipeline aborted due to quality gate failure: ${check.status}"
+              }
+          }
+      }    
+   
+   stage('Email Notification'){
+      mail bcc: '', body: '''Hi Welcome to jenkins email alerts
+      Thanks
+      ''', cc: '', from: '', replyTo: '', subject: 'Jenkins Job', to: 'kctechnologiesdevops@gmail.com'
+   }
+   stage('Slack Notification'){
+       slackSend baseUrl: 'https://hooks.slack.com/services/',
+       channel: '#KCDevOpsBatch22',
+       color: 'good', 
+       message: 'Welcome to Jenkins, Slack!', 
+       teamDomain: 'kctechnologies',
+       tokenCredentialId: 'slack-demo'
+   }
