@@ -6,3 +6,4 @@
       copy:
         src: /var/lib/jenkins/workspace/ansible/target/maven-web-project-1.0-SNAPSHOT.war
         dest: /opt/apache-tomcat-8.5.57/webapps
+        
