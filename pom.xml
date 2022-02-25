@@ -90,14 +90,14 @@
         </snapshotRepository>
    </distributionManagement>
 	
- <!-- <profiles>
+ <profiles>
         <profile>
             <id>sonar</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <sonar.host.url>http://72.44.44.163:9000/</sonar.host.url>
+                <sonar.host.url>http://34.238.239.79:9000/</sonar.host.url>
 				<sonar-maven-plugin.version>3.3.0.603</sonar-maven-plugin.version>
             </properties>
             <build>
@@ -110,7 +110,7 @@
               </plugins>
             </build>
         </profile>
-  </profiles> -->
+  </profiles>
   <build>
     <plugins>
       <plugin>
