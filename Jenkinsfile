@@ -11,13 +11,13 @@ node(){
     }
     stage("Build docker image"){
         
-        sh "docker build -t kctechnologiesdevops/batch17:1.0 ."
+        sh "docker build -t kctechnologiesdevops/batch17:${currentBuild.number} ."
     }
     stage("Push image"){
         withCredentials([string(credentialsId: 'DOCKERHUB_CREDENTIALS', variable: 'DOCKERHUB_CREDENTIALS')]) {
           sh "docker login -u kctechnologiesdevops -p ${DOCKERHUB_CREDENTIALS}"
       }
-      sh "docker push kctechnologiesdevops/batch17:1.0"
+      sh "docker push kctechnologiesdevops/batch17:${currentBuild.number}"
     }
 
      stage("Remove existing container"){
