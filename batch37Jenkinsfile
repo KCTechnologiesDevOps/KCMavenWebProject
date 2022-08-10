@@ -39,7 +39,7 @@ node(){
     
     stage("Container Creation"){
         
-        def dockerRun = "docker run --name KCMavenCntr -p 8080:8080 kctechnologiesdevops/bacth27practice:1.0"
+        def dockerRun = "docker run -itd --name KCMavenCntr -p 8080:8080 kctechnologiesdevops/bacth27practice:1.0"
         sshagent(['ec2-user-pem']) {
               sh "ssh  -o StrictHostKeyChecking=no ec2-user@172.31.27.145 ${dockerRun}"
             }
