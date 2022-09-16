@@ -2,32 +2,32 @@ apiVersion: v1
 kind: ReplicationController
 metadata:
   labels:
-    name: pragimtech
-  name: pragimtech
+    name: kctech
+  name: kctech
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        name: pragimtech
+        name: kctech
     spec:
       containers:
-      - image: pragimtech:1.0
-        name: pragimtech
+      - image: kctechnologiesdevops/batch27test:1.0
+        name: kctech
         ports:
-        - name: pragimtech
+        - name: kctech
           containerPort: 8080      
 ---
 # Node Port Service
 apiVersion: v1
 kind: Service
 metadata:
-  name: pragimtech
+  name: kctech
   labels:
-    app: pragimtech
+    app: kctech
 spec:
   selector:
-    app: pragimtech
+    app: kctech
   type: NodePort
   ports:
   - nodePort: 31000
