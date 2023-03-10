@@ -1,7 +1,6 @@
 node(){
     
-    stage("checkout from SCM"){
-        
+    stage("checkout from SCM"){  
       git 'https://github.com/KCTechnologiesDevOps/KCMavenWebProject.git'  
     }
     stage("Maven build"){
